@@ -1,0 +1,111 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  height: auto;
+  overflow: hidden;
+  
+}
+
+.pageNumbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+
+  .numbers{
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 70px;
+  margin-left: 40px;
+  width: 100%;
+  height: auto;
+
+
+  img {
+    // align-self: flex-start;
+    // margin-bottom: 105px;
+    width: 140px;
+    height: auto;
+  }
+
+  .topCards {
+    // order: 3;
+    // align-self: flex-start;
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start;
+    margin-left: 60px;
+    width: 1630px;
+    height: 260px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #5d5c69, #4c4c59);
+    
+
+    img {
+      align-self: center;
+      border-radius: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: auto;
+      height: 90%;
+    }
+  }
+}
+
+
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 70px;
+  margin-left: 40px;
+  width: 100%;
+  height: auto;
+
+
+  img {
+    // align-self: flex-start;
+    // margin-bottom: 105px;
+    width: 140px;
+    height: auto;
+  }
+
+  .bottomCards {
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start;
+    margin-left: 60px;
+    width: 1630px;
+    height: 260px;
+    border-radius: 10px;
+    background-color: #30303b;
+  
+    img {
+      align-self: center;
+      border-radius: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: auto;
+      height: 90%;
+    }
+  }
+}
+
+
+
