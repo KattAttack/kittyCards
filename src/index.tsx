@@ -1,7 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import _ from "lodash";
-import { useTransition, animated, config } from "react-spring";
 import catButton from "./images/buttons/catButton.jpg";
 import undoButton from "./images/buttons/undoButton.png";
 import { IState, IKittyImage } from "./types";
@@ -49,25 +47,26 @@ class App extends React.Component<IProps, IState> {
 	addKittyPic() {
 		const { kittyImageSrcs, kittyImages, id } = this.state;
 		const num = Math.floor(Math.random() * kittyImageSrcs.length - 1) + 1;
+		const index = num;
 		const newKittyImage = {
 			id,
 			src: kittyImageSrcs[num]
 		};
 
-		if (!_.find(kittyImages, { src: newKittyImage.src })) {
+		if (kittyImageSrcs.length === 0) {
+			console.log("No More Kitties :c");
+		} else if (kittyImages.length <= 19) {
 			const allKittyImages = [...kittyImages, newKittyImage];
 			this.setState({
+				kittyImageSrcs: kittyImageSrcs.filter((_, i) => i !== index),
 				kittyImages: allKittyImages,
 				id: id + 1
 			});
-		} else if (kittyImages.length < 20) {
-			this.addKittyPic();
-		} else {
-			console.log("No More Kitties :c");
 		}
 	}
 
 	cacheKittyPic(image: IKittyImage) {
+		console.log();
 		const { kittyCache, kittyImages } = this.state;
 
 		let newKittyImages: IKittyImage[] = [];
@@ -192,22 +191,16 @@ function PageNumbers(props) {
 
 function TopCards(props) {
 	const { currentImages, cacheKittyPic } = props;
-	const transitions = useTransition(currentImages, image => image.id, {
-		from: { opacity: 0 },
-		enter: { opacity: 1 },
-		leave: { opacity: 0 },
-		config: config.stiff
-	});
+
 	return (
 		<div className='topCards'>
-			{transitions.map(({ item, props, key }) => {
+			{currentImages.map((image, index) => {
 				return (
-					<animated.img
-						key={key}
-						style={props}
-						src={item.src}
+					<img
+						key={index}
+						src={image.src}
 						alt='Kitty Pic'
-						onClick={e => cacheKittyPic(item)}
+						onClick={e => cacheKittyPic(image)}
 					/>
 				);
 			})}
