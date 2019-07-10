@@ -47,7 +47,6 @@ class App extends React.Component<IProps, IState> {
 	addKittyPic() {
 		const { kittyImageSrcs, kittyImages, id } = this.state;
 		const num = Math.floor(Math.random() * kittyImageSrcs.length - 1) + 1;
-		const index = num;
 		const newKittyImage = {
 			id,
 			src: kittyImageSrcs[num]
@@ -58,7 +57,7 @@ class App extends React.Component<IProps, IState> {
 		} else if (kittyImages.length <= 19) {
 			const allKittyImages = [...kittyImages, newKittyImage];
 			this.setState({
-				kittyImageSrcs: kittyImageSrcs.filter((_, i) => i !== index),
+				kittyImageSrcs: kittyImageSrcs.filter((_, index) => index !== num),
 				kittyImages: allKittyImages,
 				id: id + 1
 			});
@@ -78,6 +77,14 @@ class App extends React.Component<IProps, IState> {
 				kittyCache.push(image);
 			}
 		});
+
+		if (newKittyImages.length % 5 === 0) {
+			const pageNumber = newKittyImages.length / 5;
+			console.log("newKittyImages", newKittyImages);
+			console.log("pageNumber", pageNumber);
+			this.nextPage(pageNumber);
+		}
+
 		this.setState({
 			kittyCache,
 			kittyImages: newKittyImages
