@@ -142,7 +142,7 @@ class App extends React.Component {
 
 		return (
 			<div className='App'>
-				<h1>React Spring Transition</h1>
+				<h1>React Move Demo</h1>
 				<h2>Press the kitty button for kitties!</h2>
 
 				<PageNumbers
@@ -153,7 +153,12 @@ class App extends React.Component {
 
 				<div className='container'>
 					<div className='top'>
-						<img src={catButton} alt='Cat Button' onClick={e => this.addKittyPic()} />
+						<img
+							className='buttonImg'
+							src={catButton}
+							alt='Cat Button'
+							onClick={e => this.addKittyPic()}
+						/>
 						<TopCards
 							currentImages={currentImages}
 							cacheKittyPic={this.cacheKittyPic}
@@ -162,6 +167,7 @@ class App extends React.Component {
 
 					<div className='bottom'>
 						<img
+							className='buttonImg'
 							src={undoButton}
 							alt='Undo Button'
 							onClick={e => this.recallKittyPic()}
